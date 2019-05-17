@@ -1,4 +1,5 @@
 ﻿using OtelbilgiSistemi.Data;
+using OtelbilgiSistemi.Veri_Yapıları;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace OtelbilgiSistemi
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            using (var db = new OtelBilgiEntities())
+            using (var db = new OtelBilgiEntities3())
             {
                 if (string.IsNullOrWhiteSpace(oteladTbox.Text) || string.IsNullOrWhiteSpace(ilTbox.Text) || string.IsNullOrWhiteSpace(ilceTbox.Text) ||
                     string.IsNullOrWhiteSpace(adresTxt.Text) || string.IsNullOrWhiteSpace(telefonTbox.Text) || string.IsNullOrWhiteSpace(epostaTbox.Text) ||
@@ -58,7 +59,22 @@ namespace OtelbilgiSistemi
 
         private void Kayitbtn_Click(object sender, EventArgs e)
         {
-            using (var db = new OtelBilgiEntities())
+            using(var db = new OtelBilgiEntities3())
+            {
+                LinkedList ll = new LinkedList();
+                var query = from a in db.CalisanBilgis select a;
+
+                OtelBinary o = new OtelBinary();
+
+                foreach(var item in query)
+                {
+                    o = item;
+                    ll.InsertLast(o);
+                }
+                MessageBox.Show(ll.DisplayElements());
+
+            }
+            using (var db = new OtelBilgiEntities3())
             {
                 if (string.IsNullOrWhiteSpace(TcNotbox.Text) || string.IsNullOrWhiteSpace(Adtbox.Text) || string.IsNullOrWhiteSpace(soyadtbox.Text) ||
                     string.IsNullOrWhiteSpace(adrestbox.Text) || string.IsNullOrWhiteSpace(Departmantbox.Text) || string.IsNullOrWhiteSpace(teltbox.Text) ||
@@ -93,7 +109,7 @@ namespace OtelbilgiSistemi
 
         private void Yonetici_Load(object sender, EventArgs e)
         {
-            using (var db = new OtelBilgiEntities())
+            using (var db = new OtelBilgiEntities3())
             {
                 var sorgu = from a in db.CalisanBilgis.OrderBy(p=>p.calisanTC) select a;
 
@@ -112,7 +128,7 @@ namespace OtelbilgiSistemi
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OtelBilgiEntities db = new OtelBilgiEntities();
+            OtelBilgiEntities3 db = new OtelBilgiEntities3();
             var sorgu = from a in db.CalisanBilgis where a.calisanTC == metroComboBox1.SelectedItem.ToString() select a;
             foreach (var item in sorgu)
             {
@@ -130,7 +146,7 @@ namespace OtelbilgiSistemi
 
         private void personelSilbtn_Click(object sender, EventArgs e)
         {
-            OtelBilgiEntities db = new OtelBilgiEntities();
+            OtelBilgiEntities3 db = new OtelBilgiEntities3();
         }
     }
 }

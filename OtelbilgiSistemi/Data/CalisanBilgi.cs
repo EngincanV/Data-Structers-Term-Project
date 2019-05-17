@@ -14,6 +14,12 @@ namespace OtelbilgiSistemi.Data
     
     public partial class CalisanBilgi
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CalisanBilgi()
+        {
+            this.OtelKayits = new HashSet<OtelKayit>();
+        }
+    
         public int id { get; set; }
         public string calisanTC { get; set; }
         public string calisanAd { get; set; }
@@ -24,5 +30,8 @@ namespace OtelbilgiSistemi.Data
         public string calisanDepartaman { get; set; }
         public string calisanPozisyon { get; set; }
         public Nullable<double> calisanPuan { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtelKayit> OtelKayits { get; set; }
     }
 }

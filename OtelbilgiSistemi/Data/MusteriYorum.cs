@@ -16,7 +16,9 @@ namespace OtelbilgiSistemi.Data
     {
         public int id { get; set; }
         public string musteriYorum1 { get; set; }
+        public Nullable<int> currentMusteri { get; set; }
     
+        public virtual MusteriKayit MusteriKayit { get; set; }
         public virtual OtelKayit OtelKayit { get; set; }
     }
 }

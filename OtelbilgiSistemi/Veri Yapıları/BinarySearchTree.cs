@@ -17,7 +17,7 @@ namespace OtelbilgiSistemi.Veri_Yapıları
             this.root = root;
         }
 
-        public void Add(OtelbilgiSistemi.Data.OtelKayit otel, int value)
+        public void Add(OtelbilgiSistemi.Data.OtelKayit otel ,int value)
         {
             //create parent
             BinarySearchTreeNode tempParent = new BinarySearchTreeNode();
@@ -37,7 +37,7 @@ namespace OtelbilgiSistemi.Veri_Yapıları
             }
 
             //create the value what we'll add
-            BinarySearchTreeNode addValue = new BinarySearchTreeNode(value);
+            BinarySearchTreeNode addValue = new BinarySearchTreeNode(otel);
 
             if (root == null)
                 root = addValue;

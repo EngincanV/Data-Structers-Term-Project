@@ -89,7 +89,7 @@
             this.AraBtn.Location = new System.Drawing.Point(811, 127);
             this.AraBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AraBtn.Name = "AraBtn";
-            this.AraBtn.Size = new System.Drawing.Size(109, 36);
+            this.AraBtn.Size = new System.Drawing.Size(109, 30);
             this.AraBtn.TabIndex = 4;
             this.AraBtn.Text = "Ara";
             this.AraBtn.UseSelectable = true;

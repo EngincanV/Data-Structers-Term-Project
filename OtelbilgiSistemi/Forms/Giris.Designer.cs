@@ -42,10 +42,10 @@
             // 
             // 
             this.girisEpostaTbox.CustomButton.Image = null;
-            this.girisEpostaTbox.CustomButton.Location = new System.Drawing.Point(284, 2);
-            this.girisEpostaTbox.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.girisEpostaTbox.CustomButton.Location = new System.Drawing.Point(213, 2);
+            this.girisEpostaTbox.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.girisEpostaTbox.CustomButton.Name = "";
-            this.girisEpostaTbox.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.girisEpostaTbox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.girisEpostaTbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.girisEpostaTbox.CustomButton.TabIndex = 1;
             this.girisEpostaTbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -53,7 +53,7 @@
             this.girisEpostaTbox.CustomButton.Visible = false;
             this.girisEpostaTbox.Lines = new string[0];
             this.girisEpostaTbox.Location = new System.Drawing.Point(227, 142);
-            this.girisEpostaTbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.girisEpostaTbox.Margin = new System.Windows.Forms.Padding(4);
             this.girisEpostaTbox.MaxLength = 32767;
             this.girisEpostaTbox.Name = "girisEpostaTbox";
             this.girisEpostaTbox.PasswordChar = '\0';
@@ -74,10 +74,10 @@
             // 
             // 
             this.girisSifreTbox.CustomButton.Image = null;
-            this.girisSifreTbox.CustomButton.Location = new System.Drawing.Point(284, 2);
-            this.girisSifreTbox.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.girisSifreTbox.CustomButton.Location = new System.Drawing.Point(213, 2);
+            this.girisSifreTbox.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.girisSifreTbox.CustomButton.Name = "";
-            this.girisSifreTbox.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.girisSifreTbox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.girisSifreTbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.girisSifreTbox.CustomButton.TabIndex = 1;
             this.girisSifreTbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -85,7 +85,7 @@
             this.girisSifreTbox.CustomButton.Visible = false;
             this.girisSifreTbox.Lines = new string[0];
             this.girisSifreTbox.Location = new System.Drawing.Point(227, 203);
-            this.girisSifreTbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.girisSifreTbox.Margin = new System.Windows.Forms.Padding(4);
             this.girisSifreTbox.MaxLength = 32767;
             this.girisSifreTbox.Name = "girisSifreTbox";
             this.girisSifreTbox.PasswordChar = '\0';
@@ -123,7 +123,7 @@
             // girisBtn
             // 
             this.girisBtn.Location = new System.Drawing.Point(227, 271);
-            this.girisBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.girisBtn.Margin = new System.Windows.Forms.Padding(4);
             this.girisBtn.Name = "girisBtn";
             this.girisBtn.Size = new System.Drawing.Size(104, 31);
             this.girisBtn.TabIndex = 5;
@@ -134,7 +134,7 @@
             // kayitBtn
             // 
             this.kayitBtn.Location = new System.Drawing.Point(357, 271);
-            this.kayitBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kayitBtn.Margin = new System.Windows.Forms.Padding(4);
             this.kayitBtn.Name = "kayitBtn";
             this.kayitBtn.Size = new System.Drawing.Size(108, 31);
             this.kayitBtn.TabIndex = 6;
@@ -142,7 +142,7 @@
             this.kayitBtn.UseSelectable = true;
             this.kayitBtn.Click += new System.EventHandler(this.kayitBtn_Click);
             // 
-            // Form1
+            // Giris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,8 +153,8 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.girisSifreTbox);
             this.Controls.Add(this.girisEpostaTbox);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "Giris";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "HotelFinder";
             this.ResumeLayout(false);

@@ -13,10 +13,10 @@ namespace OtelbilgiSistemi.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OtelBilgiEntities : DbContext
+    public partial class OtelBilgiEntities3 : DbContext
     {
-        public OtelBilgiEntities()
-            : base("name=OtelBilgiEntities")
+        public OtelBilgiEntities3()
+            : base("name=OtelBilgiEntities3")
         {
         }
     

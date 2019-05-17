@@ -14,6 +14,12 @@ namespace OtelbilgiSistemi.Data
     
     public partial class MusteriKayit
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MusteriKayit()
+        {
+            this.MusteriYorums = new HashSet<MusteriYorum>();
+        }
+    
         public int id { get; set; }
         public string musteriTC { get; set; }
         public string musteriAd { get; set; }
@@ -22,5 +28,8 @@ namespace OtelbilgiSistemi.Data
         public string musteriTel { get; set; }
         public string musteriSifre { get; set; }
         public Nullable<int> isTrue { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MusteriYorum> MusteriYorums { get; set; }
     }
 }

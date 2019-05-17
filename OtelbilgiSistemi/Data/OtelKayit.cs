@@ -24,7 +24,9 @@ namespace OtelbilgiSistemi.Data
         public int yildizSayisi { get; set; }
         public int odaSayisi { get; set; }
         public Nullable<double> otelPuani { get; set; }
+        public Nullable<int> currentCalisan { get; set; }
     
+        public virtual CalisanBilgi CalisanBilgi { get; set; }
         public virtual MusteriYorum MusteriYorum { get; set; }
     }
 }
