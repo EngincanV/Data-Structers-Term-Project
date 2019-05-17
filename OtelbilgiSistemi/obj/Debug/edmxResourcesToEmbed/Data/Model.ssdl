@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OtelBilgiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CalisanBilgi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="calisanTC" Type="char" MaxLength="11" />
+    <Property Name="calisanAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="calisanSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="calisanTel" Type="nvarchar" MaxLength="50" />
+    <Property Name="calisanAdres" Type="nvarchar" MaxLength="250" />
+    <Property Name="calisanEPosta" Type="nvarchar" MaxLength="150" />
+    <Property Name="calisanDepartaman" Type="nvarchar" MaxLength="50" />
+    <Property Name="calisanPozisyon" Type="nvarchar" MaxLength="50" />
+    <Property Name="calisanPuan" Type="float" />
+  </EntityType>
+  <EntityType Name="MusteriKayit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="musteriTC" Type="char" MaxLength="11" />
+    <Property Name="musteriAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriEPosta" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriTel" Type="nvarchar" MaxLength="50" />
+    <Property Name="musteriSifre" Type="nvarchar" MaxLength="20" />
+    <Property Name="isTrue" Type="int" />
+  </EntityType>
+  <EntityType Name="MusteriYorum">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="musteriYorum" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="OtelKayit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="otelAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="otelIl" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="otelIlce" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="otelAdres" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="otelTel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="otelEPosta" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="yildizSayisi" Type="int" Nullable="false" />
+    <Property Name="odaSayisi" Type="int" Nullable="false" />
+    <Property Name="otelPuani" Type="float" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_MusteriYorum_OtelKayit">
+    <End Role="OtelKayit" Type="Self.OtelKayit" Multiplicity="1" />
+    <End Role="MusteriYorum" Type="Self.MusteriYorum" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="OtelKayit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MusteriYorum">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OtelBilgiModelStoreContainer">
+    <EntitySet Name="CalisanBilgi" EntityType="Self.CalisanBilgi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MusteriKayit" EntityType="Self.MusteriKayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MusteriYorum" EntityType="Self.MusteriYorum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OtelKayit" EntityType="Self.OtelKayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MusteriYorum_OtelKayit" Association="Self.FK_MusteriYorum_OtelKayit">
+      <End Role="OtelKayit" EntitySet="OtelKayit" />
+      <End Role="MusteriYorum" EntitySet="MusteriYorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

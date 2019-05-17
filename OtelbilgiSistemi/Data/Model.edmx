@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OtelBilgiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CalisanBilgi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calisanTC" Type="char" MaxLength="11" />
+          <Property Name="calisanAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="calisanSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="calisanTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="calisanAdres" Type="nvarchar" MaxLength="250" />
+          <Property Name="calisanEPosta" Type="nvarchar" MaxLength="150" />
+          <Property Name="calisanDepartaman" Type="nvarchar" MaxLength="50" />
+          <Property Name="calisanPozisyon" Type="nvarchar" MaxLength="50" />
+          <Property Name="calisanPuan" Type="float" />
+        </EntityType>
+        <EntityType Name="MusteriKayit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="musteriTC" Type="char" MaxLength="11" />
+          <Property Name="musteriAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="musteriSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="musteriEPosta" Type="nvarchar" MaxLength="50" />
+          <Property Name="musteriTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="musteriSifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="isTrue" Type="int" />
+        </EntityType>
+        <EntityType Name="MusteriYorum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="musteriYorum" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="OtelKayit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="otelAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="otelIl" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="otelIlce" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="otelAdres" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="otelTel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="otelEPosta" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="yildizSayisi" Type="int" Nullable="false" />
+          <Property Name="odaSayisi" Type="int" Nullable="false" />
+          <Property Name="otelPuani" Type="float" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_MusteriYorum_OtelKayit">
+          <End Role="OtelKayit" Type="Self.OtelKayit" Multiplicity="1" />
+          <End Role="MusteriYorum" Type="Self.MusteriYorum" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="OtelKayit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MusteriYorum">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OtelBilgiModelStoreContainer">
+          <EntitySet Name="CalisanBilgi" EntityType="Self.CalisanBilgi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriKayit" EntityType="Self.MusteriKayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriYorum" EntityType="Self.MusteriYorum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtelKayit" EntityType="Self.OtelKayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MusteriYorum_OtelKayit" Association="Self.FK_MusteriYorum_OtelKayit">
+            <End Role="OtelKayit" EntitySet="OtelKayit" />
+            <End Role="MusteriYorum" EntitySet="MusteriYorum" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OtelBilgiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CalisanBilgi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="calisanTC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="calisanAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="calisanSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="calisanTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="calisanAdres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="calisanEPosta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="calisanDepartaman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="calisanPozisyon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="calisanPuan" Type="Double" />
+        </EntityType>
+        <EntityType Name="MusteriKayit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="musteriTC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="musteriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="musteriSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="musteriEPosta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="musteriTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="musteriSifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isTrue" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MusteriYorum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="musteriYorum1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OtelKayit" Relationship="Self.FK_MusteriYorum_OtelKayit" FromRole="MusteriYorum" ToRole="OtelKayit" />
+        </EntityType>
+        <EntityType Name="OtelKayit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="otelAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="otelIl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="otelIlce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="otelAdres" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="otelTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="otelEPosta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="yildizSayisi" Type="Int32" Nullable="false" />
+          <Property Name="odaSayisi" Type="Int32" Nullable="false" />
+          <Property Name="otelPuani" Type="Double" />
+          <NavigationProperty Name="MusteriYorum" Relationship="Self.FK_MusteriYorum_OtelKayit" FromRole="OtelKayit" ToRole="MusteriYorum" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_MusteriYorum_OtelKayit">
+          <End Role="OtelKayit" Type="Self.OtelKayit" Multiplicity="1" />
+          <End Role="MusteriYorum" Type="Self.MusteriYorum" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="OtelKayit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MusteriYorum">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OtelBilgiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CalisanBilgis" EntityType="Self.CalisanBilgi" />
+          <EntitySet Name="MusteriKayits" EntityType="Self.MusteriKayit" />
+          <EntitySet Name="MusteriYorums" EntityType="Self.MusteriYorum" />
+          <EntitySet Name="OtelKayits" EntityType="Self.OtelKayit" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_MusteriYorum_OtelKayit" Association="Self.FK_MusteriYorum_OtelKayit">
+            <End Role="OtelKayit" EntitySet="OtelKayits" />
+            <End Role="MusteriYorum" EntitySet="MusteriYorums" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OtelBilgiModelStoreContainer" CdmEntityContainer="OtelBilgiEntities">
+          <EntitySetMapping Name="CalisanBilgis">
+            <EntityTypeMapping TypeName="OtelBilgiModel.CalisanBilgi">
+              <MappingFragment StoreEntitySet="CalisanBilgi">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="calisanTC" ColumnName="calisanTC" />
+                <ScalarProperty Name="calisanAd" ColumnName="calisanAd" />
+                <ScalarProperty Name="calisanSoyad" ColumnName="calisanSoyad" />
+                <ScalarProperty Name="calisanTel" ColumnName="calisanTel" />
+                <ScalarProperty Name="calisanAdres" ColumnName="calisanAdres" />
+                <ScalarProperty Name="calisanEPosta" ColumnName="calisanEPosta" />
+                <ScalarProperty Name="calisanDepartaman" ColumnName="calisanDepartaman" />
+                <ScalarProperty Name="calisanPozisyon" ColumnName="calisanPozisyon" />
+                <ScalarProperty Name="calisanPuan" ColumnName="calisanPuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriKayits">
+            <EntityTypeMapping TypeName="OtelBilgiModel.MusteriKayit">
+              <MappingFragment StoreEntitySet="MusteriKayit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="musteriTC" ColumnName="musteriTC" />
+                <ScalarProperty Name="musteriAd" ColumnName="musteriAd" />
+                <ScalarProperty Name="musteriSoyad" ColumnName="musteriSoyad" />
+                <ScalarProperty Name="musteriEPosta" ColumnName="musteriEPosta" />
+                <ScalarProperty Name="musteriTel" ColumnName="musteriTel" />
+                <ScalarProperty Name="musteriSifre" ColumnName="musteriSifre" />
+                <ScalarProperty Name="isTrue" ColumnName="isTrue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriYorums">
+            <EntityTypeMapping TypeName="OtelBilgiModel.MusteriYorum">
+              <MappingFragment StoreEntitySet="MusteriYorum">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="musteriYorum1" ColumnName="musteriYorum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtelKayits">
+            <EntityTypeMapping TypeName="OtelBilgiModel.OtelKayit">
+              <MappingFragment StoreEntitySet="OtelKayit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="otelAdi" ColumnName="otelAdi" />
+                <ScalarProperty Name="otelIl" ColumnName="otelIl" />
+                <ScalarProperty Name="otelIlce" ColumnName="otelIlce" />
+                <ScalarProperty Name="otelAdres" ColumnName="otelAdres" />
+                <ScalarProperty Name="otelTel" ColumnName="otelTel" />
+                <ScalarProperty Name="otelEPosta" ColumnName="otelEPosta" />
+                <ScalarProperty Name="yildizSayisi" ColumnName="yildizSayisi" />
+                <ScalarProperty Name="odaSayisi" ColumnName="odaSayisi" />
+                <ScalarProperty Name="otelPuani" ColumnName="otelPuani" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OtelBilgiModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
