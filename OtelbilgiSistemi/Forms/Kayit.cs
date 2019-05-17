@@ -28,7 +28,6 @@ namespace OtelbilgiSistemi
                 }
                 else
                 {
-
                     string ad, soyad, telefon, eposta, sifre;
                     string TcNo;
                     TcNo = TcNotbox.Text;

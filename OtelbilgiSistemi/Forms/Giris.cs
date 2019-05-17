@@ -29,7 +29,6 @@ namespace OtelbilgiSistemi
         Yonetici yon = new Yonetici();
         Kullanici kul = new Kullanici();
 
-
         private void girisBtn_Click(object sender, EventArgs e)
         {
             using (var db = new OtelBilgiEntities())
@@ -44,7 +43,7 @@ namespace OtelbilgiSistemi
                     MusteriKayit kd = new MusteriKayit();
                     var sorgu2 = from a in db.MusteriKayits where a.musteriEPosta == eposta select a.musteriEPosta;
                     var sorgu3 = from a in db.MusteriKayits where a.musteriSifre == sifre select a.musteriSifre;
-                    var sorgu = from a in db.MusteriKayits select a.isTrue;
+                    var sorgu = from a in db.MusteriKayits where a.musteriEPosta == eposta && a.musteriSifre == sifre select a.isTrue;
                     string sorgu4 = "", sorgu5 = "";
                     foreach (string item in sorgu2)
                     {
