@@ -45,7 +45,7 @@
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 24;
             this.metroComboBox1.Location = new System.Drawing.Point(624, 127);
-            this.metroComboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(160, 30);
             this.metroComboBox1.TabIndex = 0;
@@ -56,7 +56,7 @@
             this.metroComboBox2.FormattingEnabled = true;
             this.metroComboBox2.ItemHeight = 24;
             this.metroComboBox2.Location = new System.Drawing.Point(285, 127);
-            this.metroComboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBox2.Name = "metroComboBox2";
             this.metroComboBox2.Size = new System.Drawing.Size(160, 30);
             this.metroComboBox2.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.metroComboBox3.FormattingEnabled = true;
             this.metroComboBox3.ItemHeight = 24;
             this.metroComboBox3.Location = new System.Drawing.Point(455, 127);
-            this.metroComboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBox3.Name = "metroComboBox3";
             this.metroComboBox3.Size = new System.Drawing.Size(160, 30);
             this.metroComboBox3.TabIndex = 2;
@@ -77,17 +77,17 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox1.Location = new System.Drawing.Point(125, 127);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 35);
+            this.textBox1.Size = new System.Drawing.Size(151, 30);
             this.textBox1.TabIndex = 3;
             // 
             // AraBtn
             // 
             this.AraBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.AraBtn.Location = new System.Drawing.Point(811, 127);
-            this.AraBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AraBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AraBtn.Name = "AraBtn";
             this.AraBtn.Size = new System.Drawing.Size(109, 36);
             this.AraBtn.TabIndex = 4;
@@ -143,7 +143,7 @@
             this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListView1.FullRowSelect = true;
             this.metroListView1.Location = new System.Drawing.Point(125, 231);
-            this.metroListView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroListView1.Margin = new System.Windows.Forms.Padding(4);
             this.metroListView1.Name = "metroListView1";
             this.metroListView1.OwnerDraw = true;
             this.metroListView1.Size = new System.Drawing.Size(793, 238);
@@ -167,7 +167,7 @@
             this.Controls.Add(this.metroComboBox2);
             this.Controls.Add(this.metroComboBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Kullanici";
             this.Text = "Kullanici";
             this.ResumeLayout(false);
