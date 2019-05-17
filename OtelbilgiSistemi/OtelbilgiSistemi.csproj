@@ -122,6 +122,9 @@
     </Compile>
     <Compile Include="Veri Yapıları\BinarySearchTree.cs" />
     <Compile Include="Veri Yapıları\BinarySearchTreeNode.cs" />
+    <Compile Include="Veri Yapıları\LinkedList.cs" />
+    <Compile Include="Veri Yapıları\LinkedListADT.cs" />
+    <Compile Include="Veri Yapıları\Node.cs" />
     <EmbeddedResource Include="Forms\Giris.resx">
       <DependentUpon>Giris.cs</DependentUpon>
     </EmbeddedResource>
