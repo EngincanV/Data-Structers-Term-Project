@@ -25,7 +25,35 @@ namespace OtelbilgiSistemi
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-
+            using(var db = new OtelBilgiEntities())
+            {
+                if (string.IsNullOrWhiteSpace(oteladTbox.Text) || string.IsNullOrWhiteSpace(ilTbox.Text) || string.IsNullOrWhiteSpace(ilceTbox.Text) ||
+                    string.IsNullOrWhiteSpace(adresTxt.Text) || string.IsNullOrWhiteSpace(telefonTbox.Text) || string.IsNullOrWhiteSpace(epostaTbox.Text) ||
+                    string.IsNullOrWhiteSpace(yildizTbox.Text) || string.IsNullOrWhiteSpace(odaTbox.Text))
+                {
+                    MessageBox.Show("You must fill in the all empty fields");
+                }
+                else
+                {
+                    string o_Ad = oteladTbox.Text, o_Il = ilTbox.Text, o_Ilce = ilceTbox.Text, o_Adres = adresTxt.Text,
+                           o_Tel = telefonTbox.Text, o_EPosta = epostaTbox.Text ;
+                    int o_Yildiz = Convert.ToInt32(yildizTbox.Text), o_Oda = Convert.ToInt32(odaTbox.Text);
+                    var query1 = new OtelKayit
+                    {
+                        otelAdi = o_Ad,
+                        otelIl = o_Il,
+                        otelIlce = o_Ilce,
+                        otelAdres = o_Adres,
+                        otelTel = o_Tel,
+                        otelEPosta = o_EPosta,
+                        yildizSayisi = o_Yildiz,
+                        odaSayisi = o_Oda
+                    };
+                    db.OtelKayits.Add(query1);
+                    db.SaveChanges();
+                    MessageBox.Show("Insertion successfully!");
+                }
+            }
         }
 
         private void Kayitbtn_Click(object sender, EventArgs e)
