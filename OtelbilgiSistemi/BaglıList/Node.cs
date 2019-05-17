@@ -8,6 +8,7 @@ namespace OtelbilgiSistemi.Veri_Yapıları
 {
     public class Node
     {
+        //nodes
         public OtelBinary Data;
         public Node Next;
     }
