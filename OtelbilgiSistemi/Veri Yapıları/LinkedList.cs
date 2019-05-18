@@ -10,17 +10,13 @@ namespace OtelbilgiSistemi.Veri_Yapıları
     {
         public override void DeleteFirst()
         {
-            if (Head != null)
+            if(Head != null)
             {
-                //Head'in next'i HeadNext'e atanıyor
                 Node tempHeadNext = this.Head.Next;
-                //HeadNext null ise zaten tek kayıt olan Head silinir.
                 if (tempHeadNext == null)
                     Head = null;
                 else
-                    //HeadNext null değilse yeni Head, HeadNext olur.
                     Head = tempHeadNext;
-                //Listedeki eleman sayısı bir azaltılıyor
                 Size--;
             }
         }
@@ -28,46 +24,37 @@ namespace OtelbilgiSistemi.Veri_Yapıları
         public override void DeleteLast()
         {
             Node lastNode = Head;
-            //Last node'dan bir önceki node'un Next'i null olacak
             Node lastPrevNode = null;
-            while (lastNode.Next != null)
+            while(lastNode.Next != null)
             {
-
                 lastPrevNode = lastNode;
                 lastNode = lastNode.Next;
-
             }
-            //Listedeki eleman sayısı bir azaltılıyor
             Size--;
-            //Last node null oldu
             lastNode = null;
 
-            //Last node'dan önceki node varsa onun next'i null olacak yoksa zaten tek kayıt vardır, 
-            //o da Head'dir, o da null olacak
             if (lastPrevNode != null)
                 lastPrevNode.Next = null;
             else
                 Head = null;
         }
+
         public override string DisplayElements()
         {
             string temp = "";
             Node item = Head;
-            while (item != null)
+            while(item != null)
             {
-                temp += "-->" + item.Data.Id;
+                temp += "-->" + item.Data;
                 item = item.Next;
             }
-
             return temp;
         }
 
-        public override void InsertFirst(OtelBinary value)
+        public override void InsertFirst(Calisan value)
         {
-            Node tmpHead = new Node
-            {
-                Data = value
-            };
+            Node tmpHead = new Node();
+            tmpHead.Data = value;
 
             if (Head == null)
                 Head = tmpHead;
@@ -82,8 +69,9 @@ namespace OtelbilgiSistemi.Veri_Yapıları
             Size++;
         }
 
-        public override void InsertLast(OtelBinary value)
+        public override void InsertLast(Calisan value)
         {
+            //Eski sonuncu node, Head'den başlanarak set ediliyor
             Node oldLast = Head;
 
             if (Head == null)
@@ -112,11 +100,6 @@ namespace OtelbilgiSistemi.Veri_Yapıları
                 //Bağlı listedeki eleman sayısı bir arttı
                 Size++;
             }
-        }
-
-        public override bool IsEmpty()
-        {
-            return Size == 0;
         }
     }
 }

@@ -34,6 +34,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="musteriYorum" Type="nvarchar" MaxLength="250" />
+    <Property Name="currentMusteri" Type="int" />
   </EntityType>
   <EntityType Name="OtelKayit">
     <Key>
@@ -49,6 +50,7 @@
     <Property Name="yildizSayisi" Type="int" Nullable="false" />
     <Property Name="odaSayisi" Type="int" Nullable="false" />
     <Property Name="otelPuani" Type="float" />
+    <Property Name="currentCalisan" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -60,6 +62,18 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <Association Name="FK_MusteriYorum_MusteriKayit">
+    <End Role="MusteriKayit" Type="Self.MusteriKayit" Multiplicity="0..1" />
+    <End Role="MusteriYorum" Type="Self.MusteriYorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MusteriKayit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MusteriYorum">
+        <PropertyRef Name="currentMusteri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_MusteriYorum_OtelKayit">
     <End Role="OtelKayit" Type="Self.OtelKayit" Multiplicity="1" />
     <End Role="MusteriYorum" Type="Self.MusteriYorum" Multiplicity="0..1" />
@@ -72,15 +86,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_OtelKayit_CalisanBilgi">
+    <End Role="CalisanBilgi" Type="Self.CalisanBilgi" Multiplicity="0..1" />
+    <End Role="OtelKayit" Type="Self.OtelKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalisanBilgi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OtelKayit">
+        <PropertyRef Name="currentCalisan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="OtelBilgiModelStoreContainer">
     <EntitySet Name="CalisanBilgi" EntityType="Self.CalisanBilgi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriKayit" EntityType="Self.MusteriKayit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MusteriYorum" EntityType="Self.MusteriYorum" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OtelKayit" EntityType="Self.OtelKayit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MusteriYorum_MusteriKayit" Association="Self.FK_MusteriYorum_MusteriKayit">
+      <End Role="MusteriKayit" EntitySet="MusteriKayit" />
+      <End Role="MusteriYorum" EntitySet="MusteriYorum" />
+    </AssociationSet>
     <AssociationSet Name="FK_MusteriYorum_OtelKayit" Association="Self.FK_MusteriYorum_OtelKayit">
       <End Role="OtelKayit" EntitySet="OtelKayit" />
       <End Role="MusteriYorum" EntitySet="MusteriYorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OtelKayit_CalisanBilgi" Association="Self.FK_OtelKayit_CalisanBilgi">
+      <End Role="CalisanBilgi" EntitySet="CalisanBilgi" />
+      <End Role="OtelKayit" EntitySet="OtelKayit" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

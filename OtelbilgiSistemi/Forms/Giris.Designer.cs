@@ -154,8 +154,11 @@
             this.Controls.Add(this.girisSifreTbox);
             this.Controls.Add(this.girisEpostaTbox);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Giris";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
+            this.Resizable = false;
             this.Text = "HotelFinder";
             this.ResumeLayout(false);
             this.PerformLayout();

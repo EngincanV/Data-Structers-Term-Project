@@ -13,7 +13,7 @@
     <Property Name="calisanEPosta" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="calisanDepartaman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="calisanPozisyon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="calisanPuan" Type="Double" />
+    <NavigationProperty Name="OtelKayits" Relationship="OtelBilgiModel.FK_OtelKayit_CalisanBilgi" FromRole="CalisanBilgi" ToRole="OtelKayit" />
   </EntityType>
   <EntityType Name="MusteriKayit">
     <Key>
@@ -27,6 +27,7 @@
     <Property Name="musteriTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="musteriSifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="isTrue" Type="Int32" />
+    <NavigationProperty Name="MusteriYorums" Relationship="OtelBilgiModel.FK_MusteriYorum_MusteriKayit" FromRole="MusteriKayit" ToRole="MusteriYorum" />
   </EntityType>
   <EntityType Name="MusteriYorum">
     <Key>
@@ -35,6 +36,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="musteriYorum1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="OtelKayit" Relationship="Self.FK_MusteriYorum_OtelKayit" FromRole="MusteriYorum" ToRole="OtelKayit" />
+    <Property Name="currentMusteri" Type="Int32" />
+    <NavigationProperty Name="MusteriKayit" Relationship="OtelBilgiModel.FK_MusteriYorum_MusteriKayit" FromRole="MusteriYorum" ToRole="MusteriKayit" />
   </EntityType>
   <EntityType Name="OtelKayit">
     <Key>
@@ -51,16 +54,8 @@
     <Property Name="odaSayisi" Type="Int32" Nullable="false" />
     <Property Name="otelPuani" Type="Double" />
     <NavigationProperty Name="MusteriYorum" Relationship="Self.FK_MusteriYorum_OtelKayit" FromRole="OtelKayit" ToRole="MusteriYorum" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="currentCalisan" Type="Int32" />
+    <NavigationProperty Name="CalisanBilgi" Relationship="OtelBilgiModel.FK_OtelKayit_CalisanBilgi" FromRole="OtelKayit" ToRole="CalisanBilgi" />
   </EntityType>
   <Association Name="FK_MusteriYorum_OtelKayit">
     <End Role="OtelKayit" Type="Self.OtelKayit" Multiplicity="1" />
@@ -79,10 +74,52 @@
     <EntitySet Name="MusteriKayits" EntityType="Self.MusteriKayit" />
     <EntitySet Name="MusteriYorums" EntityType="Self.MusteriYorum" />
     <EntitySet Name="OtelKayits" EntityType="Self.OtelKayit" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK_MusteriYorum_OtelKayit" Association="Self.FK_MusteriYorum_OtelKayit">
       <End Role="OtelKayit" EntitySet="OtelKayits" />
       <End Role="MusteriYorum" EntitySet="MusteriYorums" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="OtelBilgiModel.sysdiagram" />
+    <AssociationSet Name="FK_OtelKayit_CalisanBilgi" Association="OtelBilgiModel.FK_OtelKayit_CalisanBilgi">
+      <End Role="CalisanBilgi" EntitySet="CalisanBilgis" />
+      <End Role="OtelKayit" EntitySet="OtelKayits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MusteriYorum_MusteriKayit" Association="OtelBilgiModel.FK_MusteriYorum_MusteriKayit">
+      <End Role="MusteriKayit" EntitySet="MusteriKayits" />
+      <End Role="MusteriYorum" EntitySet="MusteriYorums" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_OtelKayit_CalisanBilgi">
+    <End Type="OtelBilgiModel.CalisanBilgi" Role="CalisanBilgi" Multiplicity="0..1" />
+    <End Type="OtelBilgiModel.OtelKayit" Role="OtelKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalisanBilgi">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OtelKayit">
+        <PropertyRef Name="currentCalisan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MusteriYorum_MusteriKayit">
+    <End Type="OtelBilgiModel.MusteriKayit" Role="MusteriKayit" Multiplicity="0..1" />
+    <End Type="OtelBilgiModel.MusteriYorum" Role="MusteriYorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MusteriKayit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MusteriYorum">
+        <PropertyRef Name="currentMusteri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

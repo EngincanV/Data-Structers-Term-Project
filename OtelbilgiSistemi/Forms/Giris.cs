@@ -1,5 +1,6 @@
 ﻿using OtelbilgiSistemi.Data;
 using OtelbilgiSistemi.Forms;
+using OtelbilgiSistemi.Veri_Yapıları;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

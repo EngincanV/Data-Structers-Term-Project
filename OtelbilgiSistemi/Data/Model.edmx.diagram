@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d981fe8c484a4d209b423e2d9172846c" Name="Diagram1">
+        <EntityTypeShape EntityType="OtelBilgiModel.CalisanBilgi" Width="1.5" PointX="3.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelBilgiModel.MusteriKayit" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelBilgiModel.MusteriYorum" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelBilgiModel.OtelKayit" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="OtelBilgiModel.FK_MusteriYorum_OtelKayit" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OtelBilgiModel.sysdiagram" Width="1.5" PointX="9.375" PointY="1" />
+        <AssociationConnector Association="OtelBilgiModel.FK_OtelKayit_CalisanBilgi" />
+        <AssociationConnector Association="OtelBilgiModel.FK_MusteriYorum_MusteriKayit" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

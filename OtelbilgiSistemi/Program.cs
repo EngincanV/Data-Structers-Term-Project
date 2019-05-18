@@ -14,7 +14,7 @@ namespace OtelbilgiSistemi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Yonetici());
+            Application.Run(new Giris());
         }
     }
 }

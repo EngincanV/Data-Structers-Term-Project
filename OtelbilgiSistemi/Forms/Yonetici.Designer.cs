@@ -48,6 +48,7 @@
             this.TcNotbox = new MetroFramework.Controls.MetroTextBox();
             this.Kayitbtn = new MetroFramework.Controls.MetroButton();
             this.PersonelbilgiTab = new MetroFramework.Controls.MetroTabPage();
+            this.metroListView2 = new MetroFramework.Controls.MetroListView();
             this.PersonelGuncelleBtn = new MetroFramework.Controls.MetroButton();
             this.personelSilbtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
@@ -104,8 +105,6 @@
             this.metroTextBox7 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox8 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox9 = new MetroFramework.Controls.MetroTextBox();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.YoneticiTab.SuspendLayout();
             this.PersonelEkletab.SuspendLayout();
             this.PersonelbilgiTab.SuspendLayout();
@@ -122,7 +121,7 @@
             this.YoneticiTab.Location = new System.Drawing.Point(33, 50);
             this.YoneticiTab.Margin = new System.Windows.Forms.Padding(4);
             this.YoneticiTab.Name = "YoneticiTab";
-            this.YoneticiTab.SelectedIndex = 1;
+            this.YoneticiTab.SelectedIndex = 2;
             this.YoneticiTab.Size = new System.Drawing.Size(1017, 459);
             this.YoneticiTab.TabIndex = 0;
             this.YoneticiTab.UseSelectable = true;
@@ -533,8 +532,7 @@
             // 
             // PersonelbilgiTab
             // 
-            this.PersonelbilgiTab.Controls.Add(this.listBox1);
-            this.PersonelbilgiTab.Controls.Add(this.metroComboBox1);
+            this.PersonelbilgiTab.Controls.Add(this.metroListView2);
             this.PersonelbilgiTab.Controls.Add(this.PersonelGuncelleBtn);
             this.PersonelbilgiTab.Controls.Add(this.personelSilbtn);
             this.PersonelbilgiTab.Controls.Add(this.metroLabel24);
@@ -566,6 +564,19 @@
             this.PersonelbilgiTab.VerticalScrollbarHighlightOnWheel = false;
             this.PersonelbilgiTab.VerticalScrollbarSize = 13;
             // 
+            // metroListView2
+            // 
+            this.metroListView2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListView2.FullRowSelect = true;
+            this.metroListView2.Location = new System.Drawing.Point(47, 32);
+            this.metroListView2.Margin = new System.Windows.Forms.Padding(4);
+            this.metroListView2.Name = "metroListView2";
+            this.metroListView2.OwnerDraw = true;
+            this.metroListView2.Size = new System.Drawing.Size(172, 335);
+            this.metroListView2.TabIndex = 47;
+            this.metroListView2.UseCompatibleStateImageBehavior = false;
+            this.metroListView2.UseSelectable = true;
+            // 
             // PersonelGuncelleBtn
             // 
             this.PersonelGuncelleBtn.Location = new System.Drawing.Point(788, 340);
@@ -585,7 +596,6 @@
             this.personelSilbtn.TabIndex = 45;
             this.personelSilbtn.Text = "Sil";
             this.personelSilbtn.UseSelectable = true;
-            this.personelSilbtn.Click += new System.EventHandler(this.personelSilbtn_Click);
             // 
             // metroLabel24
             // 
@@ -1785,26 +1795,6 @@
             this.metroTextBox9.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox9.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroComboBox1
-            // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 24;
-            this.metroComboBox1.Location = new System.Drawing.Point(3, 37);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(267, 30);
-            this.metroComboBox1.TabIndex = 48;
-            this.metroComboBox1.UseSelectable = true;
-            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(3, 146);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(267, 228);
-            this.listBox1.TabIndex = 49;
-            // 
             // Yonetici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1815,7 +1805,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Yonetici";
             this.Text = "Yonetici";
-            this.Load += new System.EventHandler(this.Yonetici_Load);
             this.YoneticiTab.ResumeLayout(false);
             this.PersonelEkletab.ResumeLayout(false);
             this.PersonelEkletab.PerformLayout();
@@ -1889,6 +1878,7 @@
         private MetroFramework.Controls.MetroButton silbtn;
         private MetroFramework.Controls.MetroButton guncelleBtn;
         private MetroFramework.Controls.MetroListView metroListView1;
+        private MetroFramework.Controls.MetroListView metroListView2;
         private MetroFramework.Controls.MetroButton PersonelGuncelleBtn;
         private MetroFramework.Controls.MetroButton personelSilbtn;
         private MetroFramework.Controls.MetroLabel metroLabel24;
@@ -1907,7 +1897,5 @@
         private MetroFramework.Controls.MetroTextBox personelTelTbox;
         private MetroFramework.Controls.MetroTextBox personelAdTbox;
         private MetroFramework.Controls.MetroTextBox personelTCtbox;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
-        private System.Windows.Forms.ListBox listBox1;
     }
 }

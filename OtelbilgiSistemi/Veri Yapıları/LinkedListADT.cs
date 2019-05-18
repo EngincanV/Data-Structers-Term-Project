@@ -10,10 +10,8 @@ namespace OtelbilgiSistemi.Veri_Yapıları
     {
         public Node Head;
         public int Size = 0;
-
-        public abstract void InsertFirst(OtelBinary value);
-        public abstract void InsertLast(OtelBinary value);
-        public abstract bool IsEmpty();
+        public abstract void InsertFirst(Calisan value);
+        public abstract void InsertLast(Calisan value);
         public abstract void DeleteFirst();
         public abstract void DeleteLast();
         public abstract string DisplayElements();

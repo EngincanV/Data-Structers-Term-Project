@@ -1,5 +1,4 @@
 ﻿using OtelbilgiSistemi.Data;
-using OtelbilgiSistemi.Veri_Yapıları;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OtelbilgiSistemi.Veri_Yapıları;
 
 namespace OtelbilgiSistemi
 {
@@ -26,7 +26,7 @@ namespace OtelbilgiSistemi
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            using (var db = new OtelBilgiEntities3())
+            using(var db = new OtelBilgiEntities())
             {
                 if (string.IsNullOrWhiteSpace(oteladTbox.Text) || string.IsNullOrWhiteSpace(ilTbox.Text) || string.IsNullOrWhiteSpace(ilceTbox.Text) ||
                     string.IsNullOrWhiteSpace(adresTxt.Text) || string.IsNullOrWhiteSpace(telefonTbox.Text) || string.IsNullOrWhiteSpace(epostaTbox.Text) ||
@@ -37,7 +37,7 @@ namespace OtelbilgiSistemi
                 else
                 {
                     string o_Ad = oteladTbox.Text, o_Il = ilTbox.Text, o_Ilce = ilceTbox.Text, o_Adres = adresTxt.Text,
-                           o_Tel = telefonTbox.Text, o_EPosta = epostaTbox.Text;
+                           o_Tel = telefonTbox.Text, o_EPosta = epostaTbox.Text ;
                     int o_Yildiz = Convert.ToInt32(yildizTbox.Text), o_Oda = Convert.ToInt32(odaTbox.Text);
                     var query1 = new OtelKayit
                     {
@@ -59,22 +59,7 @@ namespace OtelbilgiSistemi
 
         private void Kayitbtn_Click(object sender, EventArgs e)
         {
-            using(var db = new OtelBilgiEntities3())
-            {
-                LinkedList ll = new LinkedList();
-                var query = from a in db.CalisanBilgis select a;
-
-                OtelBinary o = new OtelBinary();
-
-                foreach(var item in query)
-                {
-                    o = item;
-                    ll.InsertLast(o);
-                }
-                MessageBox.Show(ll.DisplayElements());
-
-            }
-            using (var db = new OtelBilgiEntities3())
+            using(var db = new OtelBilgiEntities())
             {
                 if (string.IsNullOrWhiteSpace(TcNotbox.Text) || string.IsNullOrWhiteSpace(Adtbox.Text) || string.IsNullOrWhiteSpace(soyadtbox.Text) ||
                     string.IsNullOrWhiteSpace(adrestbox.Text) || string.IsNullOrWhiteSpace(Departmantbox.Text) || string.IsNullOrWhiteSpace(teltbox.Text) ||
@@ -86,7 +71,7 @@ namespace OtelbilgiSistemi
                 {
                     string TC = TcNotbox.Text, ad = Adtbox.Text, soyad = soyadtbox.Text,
                            tel = teltbox.Text, adres = adrestbox.Text;
-                    string ePosta = epostotbox.Text, departman = Departmantbox.Text,
+                    string ePosta = epostotbox.Text, departman = Departmantbox.Text, 
                            pozisyon = Pozisyontbox.Text;
 
                     var query = new CalisanBilgi
@@ -105,48 +90,6 @@ namespace OtelbilgiSistemi
                     MessageBox.Show("Insertion successfully!");
                 }
             }
-        }
-
-        private void Yonetici_Load(object sender, EventArgs e)
-        {
-            using (var db = new OtelBilgiEntities3())
-            {
-                var sorgu = from a in db.CalisanBilgis.OrderBy(p=>p.calisanTC) select a;
-
-                foreach (var item in sorgu)
-                {
-                    metroComboBox1.Items.Add(item.calisanTC);
-                }
-            }
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            OtelBilgiEntities3 db = new OtelBilgiEntities3();
-            var sorgu = from a in db.CalisanBilgis where a.calisanTC == metroComboBox1.SelectedItem.ToString() select a;
-            foreach (var item in sorgu)
-            {
-                personelAdresTbox.Text = item.calisanAdres;
-                personelAdTbox.Text = item.calisanAd;
-                personelTCtbox.Text = item.calisanTC;
-                personelSoyadTbox.Text = item.calisanSoyad;
-                personelTelTbox.Text = item.calisanTel;
-                personelDepartmanTbox.Text = item.calisanDepartaman;
-                personelEpostaTbox.Text = item.calisanEPosta;
-                personelPozisyonTbox.Text = item.calisanPozisyon;
-                MessageBox.Show("Başarılı");
-            }
-        }
-
-        private void personelSilbtn_Click(object sender, EventArgs e)
-        {
-            OtelBilgiEntities3 db = new OtelBilgiEntities3();
         }
     }
 }
